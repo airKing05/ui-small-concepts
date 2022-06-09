@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript from validation</title>
+   <link rel="stylesheet" href="index.css" >
+</head>
+<body>
+    <div class="container">
+        <h3>Enter validate user data </h3>
+      <form id="formData" action ="/backend.php" method="post" name="myForm">
+          Name: <input type="text" id="fname" class="fInput" name="fname" required> <span class="error"></span> <br> <br>
+          Email: <input type="email" id="femail" class="fInput" name="femail" > <span class="error"></span> <br> <br>
+          Phone: <input type="number" id="fphone" class="fInput" name="fphone" > <span class="error">Error</span> <br> <br>
+          Password: <input type="password" id="fpassword" class="fInput" name="fpassword"> <span class="error">Error</span> <br> <br>
+          Confirm Password: <input type="password" id="fcpassword" class="fInput" name="fcPassword" > <span class="error">Error</span> <br> <br>
+          <input class="btn" type="submit" value="Submit">
+      </form>
+    </div>
+    <script src="index.js" ></script>
+</body>
+</html>
