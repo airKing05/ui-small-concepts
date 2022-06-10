@@ -11,11 +11,27 @@
     <div class="container">
         <h3>Enter validate user data </h3>
       <form id="formData" action ="/backend.php" method="post" name="myForm">
-          Name: <input type="text" id="fname" class="fInput" name="fname" required> <span class="error"></span> <br> <br>
-          Email: <input type="email" id="femail" class="fInput" name="femail" > <span class="error"></span> <br> <br>
-          Phone: <input type="number" id="fphone" class="fInput" name="fphone" > <span class="error">Error</span> <br> <br>
-          Password: <input type="password" id="fpassword" class="fInput" name="fpassword"> <span class="error">Error</span> <br> <br>
-          Confirm Password: <input type="password" id="fcpassword" class="fInput" name="fcPassword" > <span class="error">Error</span> <br> <br>
+          <div class="form-control">
+               Name: <input type="text" id="fname" class="fInput" name="fname" > <small class="error"></small> <br> <br>
+          </div>
+         
+          <div class="form-control">
+              Email: <input type="email" id="femail" class="fInput" name="femail" > <small class="error"></small> <br> <br>
+          </div>
+          
+          <div class="form-control">
+              Phone: <input type="number" id="fphone" class="fInput" name="fphone" > <small class="error"></small> <br> <br>
+          </div>
+          
+          <div class="form-control">
+              Password: <input type="password" id="fpassword" class="fInput" name="fpassword"> <small class="error"></small> <br> <br>
+          </div>
+          
+         <div class="form-control">
+             Confirm Password: <input type="password" id="fcPassword" class="fInput" name="fcPassword" > <small class="error"></small> <br> <br>
+         </div>
+          
+         <div class="form-control"></div>
           <input class="btn" type="submit" value="Submit">
       </form>
     </div>

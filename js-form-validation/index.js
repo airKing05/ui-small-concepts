@@ -16,17 +16,49 @@ form.addEventListener('submit', (event)=>{
 
 
 // clear aal the error
-function clearError(){
-    let errors = document.getElementsByClassName('error');
-    for( let item of errors){
-        item.innerHTML = '';
-    }
+function clearError(id){
+    const formControl = id.parentElement;
+    const small = formControl.querySelector('small');
+    small.innerText = '';
+    // let errors = document.getElementById('eerror');
+    // errors.innerHTML = ''
+    // for( let item of errors){
+    //     item.innerHTML = '';
+    // }
 }
 
+// set error message
 function setErrorMsg(id, error){
 // set error inside of the tag id
-element = document.getElementById(id);
-element.getElementsByClassName('error')[0].innerHTML=error;
+const formControl = id.parentElement;
+const small = formControl.querySelector('small');
+//formControl.className = "form-control error"
+small.innerText = error;
+// let element = document.getElementById(id)
+// element.getElementsByClassName('error')[0].innerHTML=error;
+}
+
+// if no error occur then success() will called
+function setSuccess(id){
+    const formControl = id.parentElement;
+    formControl.className =  "form-control success";
+    clearError(id);
+}
+
+//email more validation
+function isEmail(email){
+    let atSymbol = email.indexOf('@');
+    // at symbol should not be at starting
+    if (atSymbol<1) return false;
+
+    let dot = email.lastIndexOf('.');                                  //abcd@gm.in
+    // at least 2 char should be presented in between @ and . // like abcd@gmail.com
+    if(dot<=atSymbol + 2) return false;
+    // . ki position last me nahi honi chahiye   like - abc@gmail.
+    if(dot === email.length - 1) return false;
+
+    return true;
+
 }
 
 // input field validation form
@@ -45,7 +77,7 @@ const validateForm =() =>{
     }else if( name<=3){
         setErrorMsg(fname, "name length should be at least 3");
     }else{
-        setSuccess(fname);
+       // setSuccess(fname);
     }  
 
     //email validation
@@ -57,6 +89,28 @@ const validateForm =() =>{
         setSuccess(femail);
     }
     // phone validation
-    
+    if (phone === "") {
+        setErrorMsg(fphone, "phone number can not be blank");
+    } else if (phone.length != 10) {
+        setErrorMsg(fphone, "phone number is not valid");
+    } else {
+        setSuccess(fphone);
+    }
+    // password validation
+    if (password === "") {
+        setErrorMsg(fpassword, "password can not be blank");
+    } else if (password.length <= 6) {
+        setErrorMsg(fpassword, "password should be at least 6 digit");
+    } else {
+        setSuccess(fpassword);
+    }
+    // confirm password validation
+    if (cPassword === "") {
+        setErrorMsg(fcPassword, "confirm password can not be blank");
+    } else if (password != cPassword) {
+        setErrorMsg(fcPassword, "confirm password and password are not equal");
+    } else {
+        setSuccess(fcPassword);
+    }
  
 }   

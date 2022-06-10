@@ -7,6 +7,9 @@
 #formData{
     font-size: 18px;
 }
+.form-control.success{
+   border-color: blue;
+}
 .fInput{
   width: 200px;
   padding-left: 30px;
