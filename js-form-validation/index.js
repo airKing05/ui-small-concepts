@@ -14,17 +14,25 @@ form.addEventListener('submit', (event)=>{
     validateForm();
 })
 
+// if all error are gone then submit the form
+function submitForm(username){
+    let errors = document.getElementsByClassName('error');
+    for( let item of errors){
+        if(item.innerText != ''){
+          return false
+        }
+     }
+    
+    location.href = `submit.html?username=${username}`
+    alert('from submit')
+}
 
 // clear aal the error
 function clearError(id){
     const formControl = id.parentElement;
     const small = formControl.querySelector('small');
     small.innerText = '';
-    // let errors = document.getElementById('eerror');
-    // errors.innerHTML = ''
-    // for( let item of errors){
-    //     item.innerHTML = '';
-    // }
+
 }
 
 // set error message
@@ -72,13 +80,13 @@ const validateForm =() =>{
     
     // if field is empty the call setErrorMsg() function else setSuccess()
     // name validation
-    if(name === ""){
+    if (name === "") {
         setErrorMsg(fname, "name can not be blank");
-    }else if( name<=3){
-        setErrorMsg(fname, "name length should be at least 3");
-    }else{
-       // setSuccess(fname);
-    }  
+    } else if (name.length<3) {
+        setErrorMsg(fname, "name is not valid");
+    } else {
+        setSuccess(fname);
+    } 
 
     //email validation
     if (email === "") {
@@ -112,5 +120,7 @@ const validateForm =() =>{
     } else {
         setSuccess(fcPassword);
     }
- 
+
+    // if all validation completed then submit form
+    submitForm(name)
 }   
